@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Salary Slip</title>
+<script>
+
+	function validate() {
+		
+		var firstName = document.getElementById("firstName").value;
+		if(firstName == null || firstName == ""){
+			window.alert("First Name can not be Empty");
+			return false;
+		}
+		var lastName = document.getElementById("lastName").value;
+		if(lastName == null || lastName == ""){
+			window.alert("Last Name can not be Empty");
+			return false;
+		}
+		if((firstName+lastName).length > 15){
+			window.alert("Name can not be more then 15 characters long");
+			return false;
+		}
+		var grossSalary = parseFloat(document.getElementById("grossSalary").value);
+		if(isNaN(grossSalary) || grossSalary < 0){
+			window.alert("gross is Invalid");
+			return false;
+		}
+		var address = document.getElementById("address").value;
+		if(address == null || address == ""){
+			window.alert("address can not be Empty");
+			return false;
+		}
+		
+		return true;
+	}
+	
+</script>
+</head>
+<body>
+	
+	<div style="float: left;background-color: lightgray">
+		<form method="post" target="_blank" action="generate" onsubmit="return validate()">
+			<fieldset>
+				
+				<h1>Employee Details</h1><br>
+				Title:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<select name="title" id="title">
+				<option value="Mr">Mr</option>	<option value="Mrs">Mrs</option> <option value="Ms">Ms</option>
+				</select><br><br>
+				FirstName:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="firstName" id="firstName"><br><br>
+				LastName:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="lastName" id="lastName"><br><br>
+				Gross Salary:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="grossSalary" id="grossSalary"><br><br>
+				Address:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea type="text" name="address" id="address" rows="2" cols="15"></textarea><br><br>
+				<div style="padding-left: 100px"><button type="submit">Salary Slip</button></div>
+				
+			</fieldset>
+		</form>
+	</div>
+</body>
+</html>
